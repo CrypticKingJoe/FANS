@@ -1,3 +1,6 @@
+### In Development
+FANS is currently unusable at this stage in development! Make sure you watch this repository and check back every so often.
+
 # FANS - Free Avatar Networking Script
 
 I believe people should learn to code *for free* at an earlier age. Learning to maintain a website is perhaps the easiest way to get into computer programming. So as a result of this, I am developing an open source social avatar networking site with *no strings attached*.
