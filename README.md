@@ -5,6 +5,10 @@ FANS is currently unusable at this stage in development! Make sure you watch thi
 
 I believe people should learn to code *for free* at an earlier age. Learning to maintain a website is perhaps the easiest way to get into computer programming. So as a result of this, I am developing an open source social avatar networking site with *no strings attached*.
 
+## Modular
+
+Visit the FANS Marketplace and download or upload new themes, avatar items, features and much more.
+
 ## Pure PHP
 
 FANS' backend is coded in pure PHP. That means no frameworks. This tries in with my belief that young people should learn to code! If you learn to code in a framework, then you will find it increasingly difficult to switch frameworks or programming languages in the future.
