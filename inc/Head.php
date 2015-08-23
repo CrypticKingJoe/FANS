@@ -4,7 +4,8 @@ require "Global.php";
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php if (!isset($TITLE)) echo $s_name; else echo $TITLE . ' | ' . $s_name; ?></title>
+		<?php
+		if (isset($TITLE)) { ?><title><?php echo $TITLE . ' | ' . $s_name; ?></title><?php } ?>
 		
 		<!-- stylesheets -->
 		<link rel="stylesheet" href="<?php echo $s_home; ?>themes/<?php echo $s_theme; ?>/res/Style.css" />

@@ -224,6 +224,24 @@ hr {
 	border: 1px solid #f1f1f1;
 }
 
+.money {
+	color: #fff;
+	padding: 4px 6px;
+	background-color: #2E71A0;
+}
+
+.money 
+i {
+	font-size: 14px;
+}
+
+.locked {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 /* INPUT */
 .input {
 	padding: 8px 12px;
@@ -310,4 +328,14 @@ span.input-msg-green {
 .btn-white:active {
 	background-color: #DDD;
 	box-shadow: inset 0px 1px 3px #BBB;
+}
+
+/* ERRORS */
+.error {
+	background-color: #E0C3C3;
+	border: 1px solid #AD8282;
+	padding: 10px;
+	border-radius: 3px;
+	color: #A55151;
+	margin-bottom: 20px;
 }

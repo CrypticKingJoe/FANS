@@ -22,22 +22,39 @@ if (!isset($SETTINGS)) {
 				$('#mob-usernav').slideUp(0);
 			}
 		});
+		
+		$('.container').css({ marginTop: '60px', opacity: 0.3 });
+		$('.container').animate({ marginTop: '50px', opacity: 1 }, 500, false);
 	});
 </script>
 <div class="usernav">
 	<div class="wrapper">
 		<div class="hidden-xs">
 			<?php
-			foreach ($s_usernavlinks as $s_usernavlink) {
-				?>
-				<a href="<?php echo $s_home . $s_usernavlink[1]; ?>"><?php echo $s_usernavlink[0]; ?></a>
-				<?php
+			if ($logged) {
+				foreach ($s_usernavlinks as $s_usernavlink) {
+					?>
+					<a href="<?php echo $s_home . $s_usernavlink[1]; ?>"><?php echo $s_usernavlink[0]; ?></a>
+					<?php
+				}
 			}
 			?>
 		</div>
 		<div class="pull-right">
-			<a href="<?php echo $s_home; ?>login/">Login</a>
-			<a href="<?php echo $s_home; ?>register/">Register</a>
+			<?php
+			if ($logged) {
+				?>
+				<a href="<?php echo $s_home; ?>profile/"><?php echo $user['Username']; ?></a>
+				<a href="<?php echo $s_home; ?>transactions/"><span class="money"><i class="fa fa-circle"></i> 50</span></a>
+				<a href="<?php echo $s_home; ?>logout/"><i class="fa fa-sign-out"></i></a>
+				<?php
+			} else {
+				?>
+				<a href="<?php echo $s_home; ?>login/">Login</a>
+				<a href="<?php echo $s_home; ?>register/">Register</a>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 	<div id="mob-nav" class="mob-nav">
@@ -85,3 +102,13 @@ if (!isset($SETTINGS)) {
 	</div>
 </div>
 <div class="container">
+	<?php
+	if (isset($LOCKED) && !$logged) {
+		?>
+		<div class="locked">
+			<img src="<?php echo $s_home; ?>img/locked.png" />
+			<h1>Users Only</h1>
+			<p>Please <a href="<?php echo $s_home; ?>login/">login</a> to continue</p>
+		</div>
+		<?php
+	}

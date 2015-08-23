@@ -20,9 +20,10 @@ $s_navlinks = array(
 );
 
 $s_usernavlinks = array(
-	array('Test', 'test/'),
-	array('Test2', 'test2/'),
-	array('Test3', 'test3/')
+	array('Profile', 'profile/'),
+	array('Settings', 'settings/'),
+	array('Wardrobe', 'wardrobe/'),
+	array('Requests (0)', 'requests/')
 );
 
 $s_register_username_min = 3;

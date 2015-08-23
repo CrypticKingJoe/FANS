@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+
 if (!isset($SETTINGS)) {
 	die("Uninitialised.");
 }
@@ -32,6 +35,22 @@ try {
 
 // user specific variables
 $ip = $_SERVER['REMOTE_ADDR'];
+
+$user = null;
+$logged = false;
+if (isset($_SESSION['logged']) && isset($_SESSION['uid'])) {
+	if ($_SESSION['logged'] && $_SESSION['uid'] != 0) {
+		$uid = $_SESSION['uid'];
+		$checkQ = $db->prepare("SELECT * FROM `users` WHERE `ID`='$uid'");
+		$checkQ->execute();
+		$check = $checkQ->fetch(PDO::FETCH_ASSOC);
+		
+		if ($check != 0) {
+			$user = $check;
+			$logged = true;
+		}
+	}
+}
 
 // other variables
 if (!isset($PAGE))
