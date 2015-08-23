@@ -9,6 +9,10 @@ I believe people should learn to code *for free* at an earlier age. Learning to 
 
 Visit the FANS Marketplace and download or upload new themes, avatar items, features and much more.
 
+## Responsive
+
+Mobile computers are becoming a more integral part of our day to day lives, therefore **all** websites should be compatible with every screen size. I am developing FANS with responsivity in mind to ensure it can be accessed from any device, no matter the screen size.
+
 ## Pure PHP
 
 FANS' backend is coded in pure PHP. That means no frameworks. This tries in with my belief that young people should learn to code! If you learn to code in a framework, then you will find it increasingly difficult to switch frameworks or programming languages in the future.
