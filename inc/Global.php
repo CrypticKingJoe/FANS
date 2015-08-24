@@ -6,6 +6,8 @@ if (!isset($SETTINGS)) {
 	die("Uninitialised.");
 }
 
+require $_SERVER['DOCUMENT_ROOT'] . $s_home . 'libs/FernImage.php';
+
 function encrypt($password, $salt) {
 	$format = '$2y$10$';
 	$fsalt = $format . $salt;

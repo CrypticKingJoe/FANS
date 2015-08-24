@@ -44,7 +44,7 @@ require "../inc/Head.php";
 					var username = userdata[1];
 					var userid = userdata[0];
 
-					$('.members').append("<div class='member-card'><a href='../profile/?ID=" + userid + "'><img src='http://placehold.it/100x200' /></a><br /><a href='../profile/?ID=" + userid + "'>" + username + "</a></div>");
+					$('.members').append("<div class='member-card'><a href='../profile/?ID=" + userid + "'><img src='../api/avatar.php?ID=" + userid + "' /></a><br /><a href='../profile/?ID=" + userid + "'>" + username + "</a></div>");
 				}
 			}
 		}
