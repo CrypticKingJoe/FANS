@@ -22,8 +22,7 @@ $s_navlinks = array(
 $s_usernavlinks = array(
 	array('Profile', 'profile/'),
 	array('Settings', 'settings/'),
-	array('Wardrobe', 'wardrobe/'),
-	array('Requests (0)', 'requests/')
+	array('Wardrobe', 'wardrobe/')
 );
 
 $s_register_username_min = 3;

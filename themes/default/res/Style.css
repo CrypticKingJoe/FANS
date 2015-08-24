@@ -198,6 +198,54 @@ a.active {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
+	min-height: 230px;
+}
+
+@media(max-width: 1000px) {
+	.container {
+		min-height: 0 !important;
+	}
+}
+
+.sidebar-left,
+.sidebar-right {
+	width: 1000px;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+.sidebar-left
+.container:first-child,
+.sidebar-right
+.container:nth-child(2) {
+	width: 255px;
+	display: inline-block;
+	margin-top: 0 !important;
+	vertical-align: top;
+}
+
+.sidebar-left
+.container:nth-child(2),
+.sidebar-right
+.container:first-child {
+	width: 620px;
+	margin-right: 20px;
+	display: inline-block;
+	margin-top: 0 !important;
+	vertical-align: top;
+}
+
+@media (max-width: 1000px) {
+	.sidebar-left
+	.container,
+	.sidebar-right
+	.container {
+		width: 960px !important;
+		margin-right: 0 !important;
+		margin-bottom: 10px;
+	}
 }
 
 h1,
@@ -242,6 +290,31 @@ i {
 	text-align: center;
 }
 
+.loading {
+	width: 50px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.members {
+	display: block;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.members
+.member-card {
+	width: 100px;
+	margin: 15px;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+
 /* INPUT */
 .input {
 	padding: 8px 12px;
@@ -251,6 +324,15 @@ i {
 	color: #444;
 	border: 1px solid #bbb;
 	outline: 0;
+}
+
+.input-group
+.input {
+	width: 300px;
+	max-width: calc(100% - 24px);
+}
+
+.input-group {
 	margin-bottom: 20px;
 }
 
@@ -276,10 +358,19 @@ span.input-msg-green {
 
 /* BUTTONS */
 .btn {
-	padding: 10px 12px;
+	padding: 8px 12px;
 	border: none;
 	outline: 0;
 	cursor: pointer;
+	display: inline-block;
+}
+
+.btn-sm {
+	padding: 4px 6px;
+	border: none;
+	outline: 0;
+	cursor: pointer;
+	display: inline-block;
 }
 
 .btn-blue {
@@ -291,6 +382,7 @@ span.input-msg-green {
 
 .btn-blue:hover {
 	background-color: #225477;
+	color: #fff;
 }
 
 .btn-blue:active {
@@ -307,6 +399,7 @@ span.input-msg-green {
 
 .btn-red:hover {
 	background-color: #752222;
+	color: #fff;
 }
 
 .btn-red:active {
@@ -323,12 +416,32 @@ span.input-msg-green {
 
 .btn-white:hover {
 	background-color: #EEEEEE;
+	color: #444;
 }
 
 .btn-white:active {
 	background-color: #DDD;
 	box-shadow: inset 0px 1px 3px #BBB;
 }
+
+.btn-group {
+	display: block;
+}
+
+.btn-group
+.btn {
+	margin-bottom: 3px;
+}
+
+@media(min-width: 1000px) {
+	.btn-group-sidebar
+	.btn {
+		display: block;
+		width: auto;
+		clear: both;
+	}
+}
+	
 
 /* ERRORS */
 .error {

@@ -45,6 +45,8 @@ if (!isset($SETTINGS)) {
 			if ($logged) {
 				?>
 				<a href="<?php echo $s_home; ?>profile/"><?php echo $user['Username']; ?></a>
+				<a href="<?php echo $s_home; ?>inbox/"><i class="fa fa-comment"></i> 0</a>
+				<a href="<?php echo $s_home; ?>requests/"><i class="fa fa-user-plus"></i> 0</a>
 				<a href="<?php echo $s_home; ?>transactions/"><span class="money"><i class="fa fa-circle"></i> 50</span></a>
 				<a href="<?php echo $s_home; ?>logout/"><i class="fa fa-sign-out"></i></a>
 				<?php
@@ -71,10 +73,12 @@ if (!isset($SETTINGS)) {
 	<div id="mob-usernav" class="mob-nav">
 		<div class="mob-wrapper">
 			<?php
-			foreach ($s_usernavlinks as $s_usernavlink) {
-				?>
-				<a href="<?php echo $s_home . $s_usernavlink[1]; ?>" class="mob-user"><?php echo $s_usernavlink[0]; ?></a>
-				<?php
+			if ($logged) {
+				foreach ($s_usernavlinks as $s_usernavlink) {
+					?>
+					<a href="<?php echo $s_home . $s_usernavlink[1]; ?>" class="mob-user"><?php echo $s_usernavlink[0]; ?></a>
+					<?php
+				}
 			}
 			?>
 		</div>
@@ -96,19 +100,26 @@ if (!isset($SETTINGS)) {
 		</div>
 		<div class="link-group visible-xs">
 			<a id="mob-nav-b"><i class="fa fa-bars"></i></a>
-			<a id="mob-usernav-b"><i class="fa fa-user"></i></a>
+			<?php if ($logged) { ?><a id="mob-usernav-b"><i class="fa fa-user"></i></a><?php } ?>
 		</div>
 		</div>
 	</div>
 </div>
-<div class="container">
+<?php
+if (isset($SIDEBAR_LEFT)) {
+	echo '<div class="sidebar-left">';
+} elseif (isset($SIDEBAR_RIGHT)) {
+	echo '<div class="sidebar-right">';
+} else {
+	echo '<div class="container">';
+}
+
+if (isset($LOCKED) && !$logged) {
+	?>
+	<div class="locked">
+		<img src="<?php echo $s_home; ?>img/locked.png" />
+		<h1>Users Only</h1>
+		<p>Please <a href="<?php echo $s_home; ?>login/">login</a> to continue</p>
+	</div>
 	<?php
-	if (isset($LOCKED) && !$logged) {
-		?>
-		<div class="locked">
-			<img src="<?php echo $s_home; ?>img/locked.png" />
-			<h1>Users Only</h1>
-			<p>Please <a href="<?php echo $s_home; ?>login/">login</a> to continue</p>
-		</div>
-		<?php
-	}
+}
