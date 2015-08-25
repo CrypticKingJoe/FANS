@@ -23,8 +23,10 @@ if (!isset($SETTINGS)) {
 			}
 		});
 		
-		$('.container').css({ marginTop: '60px', opacity: 0.3 });
-		$('.container').animate({ marginTop: '50px', opacity: 1 }, 500, false);
+		if (!$('.container').hasClass('container-fixed')) {
+			$('.container').css({ marginTop: '60px', opacity: 0.3 });
+			$('.container').animate({ marginTop: '50px', opacity: 1 }, 500, false);
+		}
 	});
 </script>
 <div class="usernav">
@@ -110,7 +112,7 @@ if (isset($SIDEBAR_LEFT)) {
 	echo '<div class="sidebar-left">';
 } elseif (isset($SIDEBAR_RIGHT)) {
 	echo '<div class="sidebar-right">';
-} else {
+} elseif (!isset($NO_CONTAINER)) {
 	echo '<div class="container">';
 }
 
