@@ -29,3 +29,5 @@ $s_register_username_min = 3;
 $s_register_username_max = 12;
 $s_register_username_whitespaces = true;
 $s_register_password_min = 6;
+
+$s_profile_wall_chars = 200;

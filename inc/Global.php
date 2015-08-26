@@ -37,7 +37,6 @@ try {
 
 // user specific variables
 $ip = $_SERVER['REMOTE_ADDR'];
-
 $user = null;
 $logged = false;
 if (isset($_SESSION['logged']) && isset($_SESSION['uid'])) {
@@ -50,9 +49,13 @@ if (isset($_SESSION['logged']) && isset($_SESSION['uid'])) {
 		if ($check != 0) {
 			$user = $check;
 			$logged = true;
+			$lastSeen = time();
+			$upd = $db->prepare("UPDATE `users` SET `LastSeen`='$lastSeen' WHERE `ID`='$uid'");
+			$upd->execute();
 		}
 	}
 }
+
 
 // other variables
 if (!isset($PAGE))

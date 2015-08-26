@@ -319,6 +319,12 @@ i {
 	text-align: center;
 }
 
+.avatar-portrait {
+	max-height: 100px;
+	width: 100px;
+	overflow: hidden;
+}
+
 /* INPUT */
 .input {
 	padding: 8px 12px;
@@ -534,12 +540,102 @@ img {
 .profile-overview {
 	position: relative;
 	left: 140px;
-	top: -20px;
+	top: -55px;
 	max-width: 50%;
 	width: 270px;
 }
 
 .profile-overview
+h1 {
+	color: #444;
+	text-shadow: 1px 1px #fff;
+}
+
+.profile-overview
 span {
 	font-size: 14px;
+}
+
+/* TABS */
+.tab-holder {
+	display: block;
+	width: calc(100% - 40px);
+	min-height: 40px;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ddd;
+}
+
+.tab-holder
+.tabs
+.tab {
+	display: block;
+	float: left;
+	background-color: #fff;
+	padding: 10px 15px; 
+	border-top: 1px solid #aaa;
+}
+
+.tab-holder
+.tabs
+.tab:first-child {
+	border-top-left-radius: 3px;
+	border-left: 1px solid #aaa;
+}
+
+.tab-holder
+.tabs
+.tab:last-child {
+	border-top-right-radius: 3px;
+	border-right: 1px solid #aaa;
+}
+
+.tab-holder
+.tabs
+.tab-active {
+	background-color: #eee;
+}
+
+.tab-holder
+.tabs
+.tab:hover {
+	cursor: pointer;
+	background-color: #eee;
+}
+
+.tab-holder
+.tab-content {
+	margin-top: 40px;
+	display: block;
+	padding: 10px;
+	width: calc(100% - 20px);
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	border: 1px solid #aaa;
+}
+
+/* COMMENTS */
+.comment {
+	width: calc(100% - 20px);
+	padding: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.comment
+.comment-left {
+	width: 100px;
+	margin-right: 10px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+
+.comment
+.comment-right {
+	width: calc(100% - 125px);
+	display: inline-block;
+	vertical-align: top;
 }
