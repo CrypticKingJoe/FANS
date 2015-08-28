@@ -158,6 +158,46 @@ if (isset($_GET['ID'])) {
 				}
 			});
 		});
+		
+		$('#about-me-div').fadeOut(0);
+		$('#about-me-edit').click(function() {
+			$('#about-me-edit').fadeOut(0);
+			$('#about-me-all').fadeOut(0);
+			$('#about-me-div').fadeIn(200);
+		});
+		
+		$('#cancel-about-me').click(function() {
+			$('#about-me-div').fadeOut(0);
+			$('#about-me-edit').fadeIn(200);
+			$('#about-me-all').fadeIn(200);
+		});
+		
+		$('#about-me-success').hide();
+		$('#about-me-error').hide();
+		$('#submit-about-me').click(function() {
+			var about = $('#about-me').val();
+
+			$.post(
+				'about-me.php',
+				{
+					'ID': <?php echo $ID; ?>,
+					'About': about
+				}
+			).done(function(result) {
+				console.log(result);
+				if (result == "0") {
+					$('#about-me-success').hide();
+					$('#about-me-error').show();
+				} else {
+					$('#about-me-error').hide();
+					$('#about-me-success').show();
+					$('#about-me-div').fadeOut(0);
+					$('#about-me-all').html(result.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2'));
+					$('#about-me-all').fadeIn(200);
+					$('#about-me-edit').fadeIn(200);
+				}
+			});
+		});
 	});
 </script>
 <div class="profile-banner" style="background-image: url('http://placehold.it/1000x200');">
@@ -213,13 +253,28 @@ if (isset($_GET['ID'])) {
 				</div>
 			</div>
 			<div id="tab-content-about">
-				Hi there! 
 				<?php
 				if ($logged && $ID == $user['ID']) {
 					?>
-					<br /><br />
-					<a href="../settings/" class="btn btn-blue">Edit</a>
+					<div class="error" id="about-me-error">
+						<i class="fa fa-times"></i>
+						An error occurred when trying to save, please try again later
+					</div>
+					<div class="success" id="about-me-success">
+						<i class="fa fa-check"></i>
+						Your "about me" has been saved
+					</div>
+					<div id="about-me-div">
+						<textarea name="about-me" id="about-me" class="input" rows="4" cols="10"><?php echo stripslashes(strip_tags($profile['About'])); ?></textarea><br /><br />
+						<a id="submit-about-me" class="btn btn-blue">Save Changes</a>
+						<a id="cancel-about-me" class="btn btn-white">Cancel</a>
+					</div>
+					<div id="about-me-all"><?php echo nl2br(stripslashes(strip_tags($profile['About']))); ?></div>
+					<br />
+					<a id="about-me-edit" class="btn btn-blue">Edit</a>
 					<?php
+				} else {
+					echo nl2br(stripslashes(strip_tags($profile['About'])));
 				}
 				?>
 			</div>

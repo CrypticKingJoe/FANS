@@ -7,7 +7,7 @@ $s_mysql_usname = 'fansuser';
 $s_mysql_uspass = 'fans';
 
 $s_name = 'FANS';
-$s_home = '/FANS/FANS/';
+$s_home = '/FANS/';
 $s_theme = 'default';
 $s_logo = 'logo.png';
 
