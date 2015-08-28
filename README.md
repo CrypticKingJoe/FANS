@@ -1,5 +1,3 @@
-test
-
 ### In Development
 FANS is currently unusable at this stage in development! Make sure you watch this repository and check back every so often.
 
