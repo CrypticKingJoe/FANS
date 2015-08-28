@@ -274,7 +274,7 @@ if (isset($_GET['ID'])) {
 					<a id="about-me-edit" class="btn btn-blue">Edit</a>
 					<?php
 				} else {
-					echo nl2br(stripslashes(strip_tags($profile['About'])));
+					echo nl2br(stripslashes(strip_tags($profile['About'])));1515
 				}
 				?>
 			</div>
