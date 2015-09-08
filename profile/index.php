@@ -150,7 +150,7 @@ if (isset($_GET['ID'])) {
 		
 		updateWall();
 		
-		$('#wall-comment-success').fadeOut(0);
+		$('#wall-comment-success').fadeOut(0); 
 		$('#wall-form').submit(function(event) {
 			event.preventDefault();
 			var comment = $('#wall-comment').val();
