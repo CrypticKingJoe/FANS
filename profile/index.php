@@ -61,6 +61,12 @@ if (isset($_GET['ID'])) {
 			$('#tab-content-friends').fadeOut(0);
 		}
 		
+		function msgFadeOut(id) {
+			setInterval(function() {
+				$(id).fadeOut(200);
+			}, 3000);			
+		}
+		
 		hideTabs();
 		$('#tab-content-wall').fadeIn(0);
 		
@@ -144,6 +150,7 @@ if (isset($_GET['ID'])) {
 		
 		updateWall();
 		
+		$('#wall-comment-success').fadeOut(0);
 		$('#wall-form').submit(function(event) {
 			event.preventDefault();
 			var comment = $('#wall-comment').val();
@@ -155,6 +162,8 @@ if (isset($_GET['ID'])) {
 				if (result == '1') {
 					$('#wall-comment').val('');
 					updateWall();
+					$('#wall-comment-success').show();
+					msgFadeOut('#wall-comment-success');
 				}
 			});
 		});
@@ -195,6 +204,7 @@ if (isset($_GET['ID'])) {
 					$('#about-me-all').html(result.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2'));
 					$('#about-me-all').fadeIn(200);
 					$('#about-me-edit').fadeIn(200);
+					msgFadeOut('#about-me-success');
 				}
 			});
 		});
@@ -235,6 +245,10 @@ if (isset($_GET['ID'])) {
 				if ($logged) {
 					?>
 					<span style="font-size: 18px;">Write on <?php echo $profile['Username']; ?>'s wall</span><br /><br />
+					<div class="success" id="wall-comment-success">
+						<i class="fa fa-check"></i>
+						Your comment has been posted
+					</div>
 					<form action="" method="post" id="wall-form">
 						<textarea class="input" id="wall-comment" name="wall-comment" rows="4"></textarea>
 						<?php
@@ -274,7 +288,7 @@ if (isset($_GET['ID'])) {
 					<a id="about-me-edit" class="btn btn-blue">Edit</a>
 					<?php
 				} else {
-					echo nl2br(stripslashes(strip_tags($profile['About'])));1515
+					echo nl2br(stripslashes(strip_tags($profile['About'])));
 				}
 				?>
 			</div>

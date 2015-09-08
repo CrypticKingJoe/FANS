@@ -455,14 +455,27 @@ span.input-msg-green {
 }
 	
 
-/* ERRORS */
+/* MESSAGES */
 .error {
-	background-color: #E0C3C3;
-	border: 1px solid #AD8282;
+	background-color: #CE0611;
+	border-bottom: 3px solid #690309;
+	border-radius: 5px;
 	padding: 10px;
-	border-radius: 3px;
-	color: #A55151;
+	color: #FFFFFF;
+	text-shadow: 0px 1px #690309;
 	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.success {
+	background-color: #4FAD1E;
+	border-bottom: 3px solid #2A5C10;
+	border-radius: 5px;
+	padding: 10px;
+	color: #FFFFFF;
+	text-shadow: 0px 1px #2A5C10;
+	margin-bottom: 20px;
+	display: inline-block;
 }
 
 /* PROFILES */
