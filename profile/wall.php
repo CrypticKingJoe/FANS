@@ -37,8 +37,7 @@ if (isset($_GET['ID'])) {
 			
 			$t_userName = $commenter['Username'];
 			
-			$result .= $t_date . ':' . $t_userID . ':' . $t_userName . ':' . $t_comment . '
-';
+			$result .= $t_date . ':' . $t_userID . ':' . $t_userName . ':' . $t_comment . ':' . $comment['ID'] . PHP_EOL;
 		}
 		
 		echo nl2br($result);

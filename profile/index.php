@@ -37,6 +37,20 @@ if (isset($_GET['ID'])) {
 	$ID = $user['ID'];
 	$profile = $user;
 }
+
+if ($logged && ($user['Admin'] == '1' || $user['Moderator'] == '1') && isset($_GET['delComment'])) {
+	$delID = addslashes($_GET['delComment']);
+	$delCheckQ = $db->prepare("SELECT * FROM `wall` WHERE `ID`='$delID'");
+	$delCheckQ->execute();
+	$delCheck = $delCheckQ->fetch(PDO::FETCH_ASSOC);
+	
+	if ($delCheck != 0) {
+		$del = $db->prepare("DELETE FROM `wall` WHERE `ID`='$delID'");
+		$del->execute();
+		header('location: ?ID=' . $ID . '&delSuccess=1');
+		die();
+	}
+}
 ?>
 <script>
 	$(document).ready(function() {
@@ -133,9 +147,10 @@ if (isset($_GET['ID'])) {
 					var tDate = commentData[0];
 					var tUserID = commentData[1];
 					var tUserName = commentData[2];
+					var tID = commentData[4];
 					var tComment = '';
 					
-					if (commentData.length == 4)
+					if (commentData.length == 5)
 						var tComment = String(commentData[3]).replace(new RegExp("<nl></nl>", "g"), "<br />");
 					else {
 						for (var z = 3; z < commentData.length; z++) {	
@@ -143,7 +158,17 @@ if (isset($_GET['ID'])) {
 						}
 					}
 					
-					$('#comments-all').append("<div class='comment'><div class='comment-left'><a href='../profile/?ID=" + tUserID + "'><div class='avatar-portrait'><img src='../api/avatar.php?ID=" + tUserID + "' /></div>" + tUserName + "</a></div><div class='comment-right'><small>Posted <strong>" + tDate + "</strong></small><hr />" + tComment + "</div></div>");
+					<?php
+					if ($logged && ($user['Admin'] == '1' || $user['Moderator'] == '1')) {
+						?>
+						$('#comments-all').append("<div class='comment'><div class='comment-left'><a href='../profile/?ID=" + tUserID + "'><div class='avatar-portrait'><img src='../api/avatar.php?ID=" + tUserID + "' /></div>" + tUserName + "</a></div><div class='comment-right'><small>Posted <strong>" + tDate + "</strong></small><hr />" + tComment + "<div class='mod-section'><span class='mod-section-head'>Moderation Actions</span><br /><a href='?ID=<?php echo $ID; ?>&delComment=" + tID + "'>Delete</a></div>");
+						<?php
+					} else {
+						?>
+						$('#comments-all').append("<div class='comment'><div class='comment-left'><a href='../profile/?ID=" + tUserID + "'><div class='avatar-portrait'><img src='../api/avatar.php?ID=" + tUserID + "' /></div>" + tUserName + "</a></div><div class='comment-right'><small>Posted <strong>" + tDate + "</strong></small><hr />" + tComment);
+						<?php
+					}
+					?>
 				}
 			});
 		}
@@ -242,6 +267,15 @@ if (isset($_GET['ID'])) {
 		<div class="tab-content">
 			<div id="tab-content-wall">
 				<?php
+				if (isset($_GET['delSuccess']) && $logged && ($user['Admin'] == '1' || $user['Moderator'] == '1')) {
+					?>
+					<div class="success">
+						<i class="fa fa-check"></i>
+						That comment has been deleted successfully
+					</div><br /><br />
+					<?php
+				}
+				
 				if ($logged) {
 					?>
 					<span style="font-size: 18px;">Write on <?php echo $profile['Username']; ?>'s wall</span><br /><br />

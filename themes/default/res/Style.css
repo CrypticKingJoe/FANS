@@ -454,6 +454,25 @@ span.input-msg-green {
 	}
 }
 	
+/* MODERATION */
+.mod-section {
+	margin-top: 20px;
+	display: block;
+	width: calc(100% - 10px);
+	background-color: #DDDDDD;
+	padding: 5px;
+	border: 1px solid #AAAAAA;
+}
+
+.mod-section-head {
+	color: #666;
+	font-style: italic;
+}
+
+.mod-section
+a {
+	font-size: 14px;
+}
 
 /* MESSAGES */
 .error {
@@ -467,6 +486,17 @@ span.input-msg-green {
 	display: inline-block;
 }
 
+.error:hover {
+	background-color: #8A040C;
+	cursor: pointer;
+}
+
+.error:active {
+	border-bottom: 0;
+	position: relative;
+	top: 3px;
+}
+
 .success {
 	background-color: #4FAD1E;
 	border-bottom: 3px solid #2A5C10;
@@ -476,6 +506,17 @@ span.input-msg-green {
 	text-shadow: 0px 1px #2A5C10;
 	margin-bottom: 20px;
 	display: inline-block;
+}
+
+.success:hover {
+	background-color: #3F8A18;
+	cursor: pointer;
+}
+
+.success:active {
+	border-bottom: 0;
+	position: relative;
+	top: 3px;
 }
 
 /* PROFILES */

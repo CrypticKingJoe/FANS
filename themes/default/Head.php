@@ -27,6 +27,14 @@ if (!isset($SETTINGS)) {
 			$('.container').css({ marginTop: '60px', opacity: 0.3 });
 			$('.container').animate({ marginTop: '50px', opacity: 1 }, 500, false);
 		}
+		
+		$('.success').click(function() {
+			$(this).fadeOut(200);
+		})
+		
+		$('.error').click(function() {
+			$(this).fadeOut(200);
+		})
 	});
 </script>
 <div class="usernav">
