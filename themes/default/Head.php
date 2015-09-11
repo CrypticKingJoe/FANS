@@ -4,6 +4,32 @@ if (!isset($SETTINGS)) {
 }
 ?>
 <script type="text/javascript">
+	var is_notification = false;
+	function showNotification(message, notif_type) {
+		if (!is_notification) {
+			// notif_type = 0 = success
+			// notif_type = 1 = error
+			// notif_type = 2 = warning
+			
+			if (notif_type == 0)
+				message = "<i class='fa fa-check'></i> " + message;
+			else if (notif_type == 1)
+				message = "<i class='fa fa-times'></i> " + message;
+			else if (notif_type == 2)
+				message = "<i class='fa fa-exclamation-triangle'></i> " + message;
+			
+			$('#notification-area').append("<div class='head-notification' id='notification-obj'>"+message+"</div>");
+			$('#notification-obj').css({"bottom": 10});
+			
+			setInterval(function() {
+				$('#notification-obj').animate({"right":"-500px"},200,function(){
+					is_notification = false;
+					$('#notification-obj').remove();
+				});
+			}, 2000);
+		}
+	}
+	
 	$(document).ready(function() {
 		$('#mob-nav').slideUp(0);
 		$('#mob-usernav').slideUp(0);
@@ -37,6 +63,7 @@ if (!isset($SETTINGS)) {
 		})
 	});
 </script>
+<div id="notification-area"></div>
 <div class="usernav">
 	<div class="wrapper">
 		<div class="hidden-xs">

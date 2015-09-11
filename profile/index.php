@@ -218,7 +218,6 @@ if ($logged && ($user['Admin'] == '1' || $user['Moderator'] == '1') && isset($_G
 					'About': about
 				}
 			).done(function(result) {
-				console.log(result);
 				if (result == "0") {
 					$('#about-me-success').hide();
 					$('#about-me-error').show();
@@ -233,13 +232,52 @@ if ($logged && ($user['Admin'] == '1' || $user['Moderator'] == '1') && isset($_G
 				}
 			});
 		});
+		
+		$('#sendfr').click(function() {
+			$.get('friend-request.php', {
+				'ID': <?php echo $ID; ?>
+			}).done(function(result) {
+				if (result == '1') {
+					showNotification("You have successfully sent <?php echo $profile['Username']; ?> a friend request", 0);
+				}
+			});
+		});
 	});
 </script>
 <div class="profile-banner" style="background-image: url('http://placehold.it/1000x200');">
-	<div class="profile-options">
-		<a href="#"><i class="fa fa-comment"></i></a>
-		<a href="#"><i class="fa fa-user-plus"></i></a>
-	</div>
+	<?php
+	if ($logged && $ID != $user['ID']) {
+		$isFriends = false;
+		$isPending = false;
+		
+		$checkFriendsQ = $db->prepare("SELECT * FROM `friends` WHERE `WithID`='$ID' AND `UserID`='$user[ID]'");
+		$checkFriendsQ->execute();
+		$checkFriends = $checkFriendsQ->fetch(PDO::FETCH_ASSOC);
+		
+		if ($checkFriends > 0) {
+			$isFriends = true;
+			if ($checkFriends['Accepted'] == 0) {
+				$isPending = true;
+			}
+		}
+		?>
+		<div class="profile-options">
+			<a href="#"><i class="fa fa-comment"></i></a>
+			<?php
+			if (!$isFriends) {
+				?>
+				<a id="sendfr"><i class="fa fa-user-plus"></i></a>
+				<?php
+			} elseif ($isFriends && $isPending) {
+				?>
+				<a href="#"><i class="fa fa-user-plus"></i> Pending</a>
+				<?php
+			}
+			?>
+		</div>
+		<?php
+	}
+	?>
 	<img src="../api/avatar.php?ID=<?php echo $ID; ?>" />
 </div>
 <div class="container container-fixed">
