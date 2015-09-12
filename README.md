@@ -15,7 +15,7 @@ Mobile computers are becoming a more integral part of our day to day lives, ther
 
 ## Pure PHP
 
-FANS' backend is coded in pure PHP. That means no frameworks. This tries in with my belief that young people should learn to code! If you learn to code in a framework, then you will find it increasingly difficult to switch frameworks or programming languages in the future.
+FANS' backend is coded in pure PHP. That means no frameworks. This ties in with my belief that young people should learn to code! If you learn to code in a framework, then you will find it increasingly difficult to switch frameworks or programming languages in the future.
 
 ## Modern Technology
 
