@@ -24,3 +24,4 @@ The front end is developed in HTML5 and CSS3, whilst utilising JavaScript and jQ
 ## Earn Money
 
 As stated in FANS' license, you may use the software for commerical use. This does **NOT** mean you can resell the software, but you can make money off the software (via upgrades, currency purchases etc). To emphasise this freedom, FANS comes with an optional upgrade system utilising PayPal and Stripe to automatically process upgrades for users who buy them.
+ 
