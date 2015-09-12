@@ -239,6 +239,8 @@ if ($logged && ($user['Admin'] == '1' || $user['Moderator'] == '1') && isset($_G
 			}).done(function(result) {
 				if (result == '1') {
 					showNotification("You have successfully sent <?php echo $profile['Username']; ?> a friend request", 0);
+					$('#sendfr').remove();
+					$('.profile-options').append("<a><i class='fa fa-user-plus'></i> Pending</a>");
 				}
 			});
 		});
@@ -270,7 +272,7 @@ if ($logged && ($user['Admin'] == '1' || $user['Moderator'] == '1') && isset($_G
 				<?php
 			} elseif ($isFriends && $isPending) {
 				?>
-				<a href="#"><i class="fa fa-user-plus"></i> Pending</a>
+				<a><i class="fa fa-user-plus"></i> Pending</a>
 				<?php
 			}
 			?>

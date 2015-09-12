@@ -21,10 +21,12 @@ if (!isset($SETTINGS)) {
 			$('#notification-area').append("<div class='head-notification' id='notification-obj'>"+message+"</div>");
 			$('#notification-obj').css({"bottom": 10});
 			
-			setInterval(function() {
-				$('#notification-obj').animate({"right":"-500px"},200,function(){
-					is_notification = false;
-					$('#notification-obj').remove();
+			setTimeout(function() {
+				$('#notification-obj').animate({"right":"-900px"},600,function(){
+					$('#notification-area').empty();
+					setTimeout(function() {
+						is_notification = false;
+					}, 10);
 				});
 			}, 2000);
 		}
